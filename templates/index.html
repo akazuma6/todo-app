@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ToDoリスト</title>
+    <style>
+        body { font-family: sans-serif; container-type: inline-size; }
+        .container { max-width: 600px; margin: 2em auto; padding: 1em; border: 1px solid #ccc; border-radius: 8px; }
+        ul { list-style: none; padding: 0; }
+        li { padding: 0.5em; border-bottom: 1px solid #eee; }
+        form { margin-top: 1em; display: flex; }
+        input[type="text"] { flex-grow: 1; padding: 0.5em; }
+        button { padding: 0.5em 1em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ToDoリスト</h1>
+        <ul>
+            {{ range .tasks }}
+                <li>{{ .Title }}</li>
+            {{ else }}
+                <li>タスクはありません。</li>
+            {{ end }}
+        </ul>
+
+        <hr>
+
+        <form action="/new" method="post">
+            <input type="text" name="title" placeholder="新しいタスク" required>
+            <button type="submit">追加</button>
+        </form>
+    </div>
+</body>
+</html>
